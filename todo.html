@@ -4,11 +4,11 @@
 <h1>To Create the To-Do List</h1>
 <style>
 body {
-  margin: 5;
+  margin: 0;
   min-width: 250px;
 }
 ul {
-  margin: 0;
+  margin: 5;
   padding: 0;
 }
 ul li {
@@ -16,11 +16,25 @@ ul li {
   position: relative;
   padding: 12px 8px 12px 40px;
   list-style-type: none;
-  background: #efff;
+  background: #d9d9d9;
   font-size: 20px;
 }
+.header {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: black;
+   text-align: center;
+}
+input {
+  margin: 0;
+  border: none;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
 .addBtn {
-  padding: 0px;
+  padding: 10px;
   width: 5%;
   background: #d9d9d9;
   color: #555;
@@ -28,16 +42,17 @@ ul li {
   text-align: center;
   font-size: 16px;
   cursor: pointer;
+
 }
 </style>
 </head>
 <body>
 
-<div id="myDIV">
-  <h2 style="margin:10px">My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title">
-  <span onclick="newElement()" class="addBtn">Addcontent</span>
-</div>
+  <div id="myDIV" class="header">
+    <h2>My To Do List</h2>
+    <input type="text" id="myInput" placeholder="Title...">
+    <span onclick="newElement()" class="addBtn">Add</span>
+  </div>
 
 <ul id="myUL">
   <li> my name is amit</li>
@@ -47,29 +62,21 @@ ul li {
 function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
+  var i = inputValue + "[x]";
+  var t = document.createTextNode(i + "");
   li.appendChild(t);
 
   if (inputValue === '') {
-    alert("That is the blank write something");
+    alert("That is the blaffnk write something");
   } else {
     document.getElementById("myUL").appendChild(li);
   }
-  document.getElementById("myInput").value = "";
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-  var close = document.getElementsByClassName("close");
-  var i;
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
+  document.getElementById("myInput").value = "";
+  li.onclick = removeItem;
+}
+function removeItem(e) {
+  e.target.parentElement.removeChild(e.target);
 }
 </script>
 </body>
