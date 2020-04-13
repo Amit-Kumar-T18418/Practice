@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h1>To Create the To-Do List</h1>
+<style>
+body {
+  margin: 0;
+  min-width: 250px;
+}
+ul {
+  margin: 5;
+  padding: 0;
+}
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #d9d9d9;
+  font-size: 20px;
+}
+.header {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: black;
+   text-align: center;
+}
+input {
+  margin: 0;
+  border: none;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+.addBtn {
+  padding: 10px;
+  width: 5%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+
+  <div id="myDIV" class="header">
+    <h2>My To Do List</h2>
+    <input type="text" id="myInput" placeholder="Title...">
+   <span class="addBtn">Add</span>
+  </div>
+
+<ul id="myUL">
+  <li> my name is amit</li>
+</ul>
+<script>
+ $(document).ready(function(){
+ $(".addBtn").click(function(){
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var i = inputValue + "[x]";
+  var t = document.createTextNode(i + "");
+  li.appendChild(t);
+
+  if (inputValue === '') {
+    alert("That is the neededhg write something");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+
+  document.getElementById("myInput").value = "";
+  li.onclick = removeItem;
+});
+});
+function removeItem(e) {
+  e.target.parentElement.removeChild(e.target);
+}
+</script>
+</body>
+</html>
