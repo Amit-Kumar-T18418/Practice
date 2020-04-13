@@ -6,6 +6,7 @@
 body {
   margin: 0;
   min-width: 250px;
+   background-color: silver;
 }
 ul {
   margin: 5;
@@ -15,7 +16,7 @@ ul li {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
-  list-style-type: none;
+  list-style-type: circle;
   background: #d9d9d9;
   font-size: 20px;
 }
@@ -23,7 +24,12 @@ ul li {
   background-color: #f44336;
   padding: 30px 40px;
   color: black;
-   text-align: center;
+  text-align: center;
+}
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 input {
   margin: 0;
@@ -32,6 +38,9 @@ input {
   padding: 10px;
   float: left;
   font-size: 16px;
+}
+ul li:nth-child(odd) {
+background: #f9f9f9;
 }
 .addBtn {
   padding: 10px;
@@ -59,6 +68,7 @@ input {
   <li> my name is amit</li>
 </ul>
 <script>
+
  $(document).ready(function(){
  $(".addBtn").click(function(){
   var li = document.createElement("li");
@@ -68,7 +78,7 @@ input {
   li.appendChild(t);
 
   if (inputValue === '') {
-    alert("That is the neededhg write something");
+    alert("That is the need write something");
   } else {
     document.getElementById("myUL").appendChild(li);
   }
