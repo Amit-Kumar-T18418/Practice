@@ -1,95 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<h1>To Create the To-Do List</h1>
 <style>
-body {
-  margin: 0;
-  min-width: 250px;
-   background-color: silver;
-}
-ul {
-  margin: 5;
-  padding: 0;
-}
-ul li {
-  cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  list-style-type: circle;
-  background: #d9d9d9;
-  font-size: 20px;
-}
-.header {
-  background-color: #f44336;
-  padding: 30px 40px;
-  color: black;
-  text-align: center;
-}
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-input {
-  margin: 0;
-  border: none;
-  width: 75%;
-  padding: 10px;
-  float: left;
-  font-size: 16px;
-}
-ul li:nth-child(odd) {
-background: #f9f9f9;
-}
-.addBtn {
-  padding: 10px;
-  width: 5%;
-  background: #d9d9d9;
-  color: #555;
-  float: left;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
 
+body {
+    text-align: center;
+    background-color: #3c6dc5;
+    color: black;
+    padding: 12px 8px 12px 40px;
+
+}
+
+h1 {
+    margin-top: 100px;
+}
+
+ul {
+    display: inline-block;
+    cursor: pointer;
+    text-align: left;
+    width: 300px;
+    max-width: 100%;
+}
+
+li {
+    color: lightgray;
+}
+
+li:first-child {
+    font-size: 130%;
+    color: white;
+}
+
+input[type='submit'] {
+    background-color: red;
+    border: 5px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 <body>
-
-  <div id="myDIV" class="header">
-    <h2>My To Do List</h2>
-    <input type="text" id="myInput" placeholder="Title...">
-   <span class="addBtn">Add</span>
-  </div>
-
-<ul id="myUL">
-  <li> my name is amit</li>
-</ul>
+    <h1>
+        Simple To-Do List
+    </h1>
+    <form>
+        <label>Enter a new task:</label>
+        <input class="input" type="text">
+        <input type="submit" value="Add">
+    </form>
+    <ul title="Click to delete; drag to reorder">
+    </ul>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+    <script src="scripts.js"></script>
 <script>
-
- $(document).ready(function(){
- $(".addBtn").click(function(){
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var i = inputValue + "[x]";
-  var t = document.createTextNode(i + "");
-  li.appendChild(t);
-
-  if (inputValue === '') {
-    alert("That is the need write something");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-
-  document.getElementById("myInput").value = "";
-  li.onclick = removeItem;
+$(document).ready(function() {
+    $('form').submit(function() {
+        if ($('.input').val() !== '') {
+            var pat = $('.input').val();
+            var newLi = $('<li>' + pat + '</li>');
+            newLi.on('click', function() {
+                $(this).remove();
+            });
+            $('ul').prepend(newLi);
+            $('.input').val('');
+            return false;
+        }
+    });
 });
-});
-function removeItem(e) {
-  e.target.parentElement.removeChild(e.target);
-}
 </script>
 </body>
 </html>
