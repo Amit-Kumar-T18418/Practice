@@ -50,11 +50,9 @@ input[type='submit'] {
         <input class="input" type="text">
         <input type="submit" value="Add">
     </form>
-    <ul title="Click to delete; drag to reorder">
+    <ul 
     </ul>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
-    <script src="scripts.js"></script>
 <script>
 $(document).ready(function() {
     $('form').submit(function() {
@@ -66,7 +64,7 @@ $(document).ready(function() {
             });
             $('ul').prepend(newLi);
             $('.input').val('');
-            return false;
+             return false;
         }
     });
 });
