@@ -9,13 +9,13 @@
   float: left;
   width: 50%;
   padding: 10px;
-  height: 1300px;
+  height: 860px;
 }
 #column2 {
   float: left;
   width: 50%;
   padding: 10px;
-  height: 1300px;
+  height: 860px;
 }
 .dropbtn {
   background-color: #3498DB;
@@ -29,8 +29,11 @@
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 190px;
   overflow: auto;
+}
+p {
+  font-size: 30px;
 }
 .dropdown-content a {
   color: black;
@@ -41,6 +44,48 @@
 .dropdown a:hover {background-color: #ddd;}
 .show {display: block;}
 
+.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 10px;
+  cursor: pointer;
+}
+.success {
+  border-color: #4CAF50;
+  color: green;
+}
+.success:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.notification {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
+
+
 </style>
 </head>
 <body>
@@ -48,11 +93,25 @@
    <div id="column1" style="background-color:#aaa;">
     <h2>Column 1</h2>
     <button id="showBtn">Show</button>
+    <p>&#128512;</p>
+    <a href="#" class="notification">
+  <span>notification</span>
+  <span class="badge">3</span>
+</a>
+
+
    </div>
    <div id="column2" style="background-color:#bbb;">
+     <div class="search-container">
+         <form>
+           <input type="text" placeholder="Search.." name="search">
+           <button type="submit"><i class="fa fa-search"></i></button>
+         </form>
+       </div>
+
    <h2>Home</h2>
    <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <button onclick="myFunction()" class="dropbtn">Seemore</button>
   <div id="myDropdown" class="dropdown-content">
     <a href="">Groups</a>
     <a href="">Directory</a>
@@ -61,6 +120,20 @@
     <a href="">Note</a>
   </div>
 </div>
+<br>
+<button class="btn success">success</button>
+<h>FreshServices Runner Club!</h><br>
+<button class="btn success">Warning</button>
+<h>FreshServices UI</h><br>
+<button class="btn success">success</button>
+<h>Fresworks in news</h><br>
+<button class="btn success">Warning</button>
+<h>Freshdesk</h><br>
+<button class="btn success">Warning</button>
+<h>Freshdesk in news</h><br>
+<button class="btn success">success</button>
+<h>InternalEvents</h><br>
+
   </div>
 </div>
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -74,19 +147,9 @@ $(document).ready(function(){
 <script>
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
+  $('#dropbtn').hide();
 }
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+
 </script>
 </body>
 </html>
