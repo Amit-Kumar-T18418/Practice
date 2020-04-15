@@ -9,16 +9,20 @@
   float: left;
   width: 200px;
   padding: 10px;
-  height: 817px;
+  height: 835px;
 }
 #column2 {
   float: left;
   width: 600px;
   padding: 10px;
-  height: 817px;
+  height: 835px;
 }
 p {
   font-size: 30px;
+}
+#showBtn {
+  font-size: 15px;
+
 }
 .btn {
   border: 2px solid black;
@@ -28,19 +32,13 @@ p {
   font-size: 10px;
   cursor: pointer;
 }
-.success {
-  border-color: #4CAF50;
-  color: green;
-}
-.success:hover {
-  background-color: #4CAF50;
-  color: white;
-}
 #panel, #flip {
-  padding: 5px;
-  text-align: center;
-  background-color: #e5eecc;
-  border: solid 1px #c3c3c3;
+  text-align: left;
+  background-color:#EBEDF0;
+  border: solid 0px;
+  font-size: 25px;
+  margin-left:50px;
+  margin-top:-38px;
 }
 .avatar {
   vertical-align: middle;
@@ -56,21 +54,6 @@ p {
      margin-top:+400px;
      margin-left:-5px;
 }
-.block {
-  display: block;
-  width: 100%;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-}
-.block:hover {
-  background-color: #ddd;
-  color: black;
-}
 .notification {
   background-color: #555;
   color: white;
@@ -80,11 +63,9 @@ p {
   display: inline-block;
   border-radius: 2px;
 }
-
 .notification:hover {
   background: red;
 }
-
 .notification .badge {
   position: absolute;
   top: -10px;
@@ -98,9 +79,9 @@ p {
 </head>
 <body>
    <div class="row">
-   <div id="column1" style="background-color:#ECF3FF;">
+   <div id="column1" style="background-color:#F2F3F5;">
     <h2>Column 1</h2>
-    <button id="showBtn">show</button><br><br>
+    <button id="showBtn">Show</button><br><br>
     <a class="notification">
       <span>notify</span>
       <span class="badge">3</span>
@@ -111,7 +92,7 @@ p {
      <p>&#x1F981;</p>
     <img src="https://i.picsum.photos/id/823/200/200.jpg"class="avatar">
    </div>
-   <div id="column2" style="background-color:#ECF3FF;">
+   <div id="column2" style="background-color:#F2F3F5;">
      <div class="search-container">
          <form>
            <input type="text" placeholder="Search.." name="search">
@@ -121,7 +102,8 @@ p {
 
    <h2>Home</h2>
    <div class="dropdown">
-  <div id="flip">ShowMore</div>
+     <img src="https://i.picsum.photos/id/959/200/200.jpg"class="avatar">
+  <div id="flip">ShowMore</div><br>
     <div id="myDropdown">
       <img src="https://i.picsum.photos/id/810/200/200.jpg"class="avatar">
       <h>Groups</h><br>
@@ -133,8 +115,7 @@ p {
       <h>Notes</h><br>
   </div>
 </div>
-<br>
-  <button class="block">Shortcuts</button><br>
+<h2>ShortCuts</h2>
 <div id="down" class="new-content">
 <img src="https://i.picsum.photos/id/452/200/200.jpg"class="avatar">
 <h>FreshServices Runner Club!</h><br>
@@ -167,8 +148,7 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $("#flip").click(function(){
-    $("#myDropdown").toggle("slow");
-     $('#column1').toggle();
+    $("#myDropdown").toggle("fast");
   });
 });
 
