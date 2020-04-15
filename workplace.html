@@ -7,15 +7,15 @@
 }
 #column1 {
   float: left;
-  width: 50%;
+  width: 200px;
   padding: 10px;
-  height: 860px;
+  height: 800px;
 }
 #column2 {
   float: left;
-  width: 50%;
+  width: 600px;
   padding: 10px;
-  height: 860px;
+  height: 800px;
 }
 p {
   font-size: 30px;
@@ -42,14 +42,57 @@ p {
   background-color: #e5eecc;
   border: solid 1px #c3c3c3;
 }
-
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+}
 #panel {
   padding: 50px;
 }
 .item {
 
-    margin-top:+730px;
-     margin-left:5px;
+     margin-top:+400px;
+     margin-left:-5px;
+}
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+.notification {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+  padding: 10px 5px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
 }
 </style>
 </head>
@@ -57,9 +100,16 @@ p {
    <div class="row">
    <div id="column1" style="background-color:#aaa;">
     <h2>Column 1</h2>
-    <button id="showBtn">Show</button>
+    <button id="showBtn">show</button><br><br>
+    <a class="notification">
+      <span>notify</span>
+      <span class="badge">3</span>
+    </a><br>
+    <p>&#128520;</p>
     <div class="item"></div>
-      <p>&#128512;</p><br>
+     <p>&#128512;</p>
+     <p>&#x1F981;</p>
+    <img src="img_avatar.png" alt="Avatar" class="avatar">
    </div>
    <div id="column2" style="background-color:#bbb;">
      <div class="search-container">
@@ -68,9 +118,10 @@ p {
            <button type="submit"><i class="fa fa-search"></i></button>
          </form>
        </div>
-   <h2>WorkPlace</h2>
+
+   <h2>Home</h2>
    <div class="dropdown">
-  <div id="flip">Home</div>
+  <div id="flip">ShowMore</div>
     <div id="myDropdown">
     <a href="">Groups</a><br>
     <a href="">Directory</a><br>
@@ -79,17 +130,28 @@ p {
   </div>
 </div>
 <br>
+  <button class="block">Shortcuts</button>
 <div id="down" class="new-content">
-<button class="btn success">success</button>
+<img src="img_avatar.png"class="avatar">
 <h>FreshServices Runner Club!</h><br>
-<button class="btn success">Warning</button>
+<img src="img_avatar.png"class="avatar">
 <h>FreshServices UI</h><br>
-<button class="btn success">success</button>
+<img src="img_avatar.png"class="avatar">
+<h>DevHour Monthy tech meet</h><br>
+<img src="img_avatar.png"class="avatar">
+<h>Fresfit</h><br>
+<img src="img_avatar.png"class="avatar">
+<h>Fresworks Engineering</h><br>
+<img src="img_avatar.png"class="avatar">
+<h>Fresworks Front-end</h><br>
+<img src="img_avatar.png"class="avatar">
+<h>General Discussion</h><br>
+<img src="img_avatar.png"class="avatar">
 <h>Fresworks in news</h><br>
-<button class="btn success">success</button>
-<h>Fresworks in news</h><br>
-<button class="btn success">success</button>
-<h>Fresworks in news</h><br>
+<img src="img_avatar.png"class="avatar">
+<h>JS perf matters</h><br>
+<img src="img_avatar.png"class="avatar">
+<h>FresDeskproduct ideas</h><br>
 </div>
 
   </div>
