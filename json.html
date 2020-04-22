@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.card {
+  padding: 30px;
+  text-align: center;
+  border: 30px solid #dddddd;
+  float:left;
+}
+</style>
+</head>
+<body>
+		<div class="display-data">
+	</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+    Display();
+  });
+
+	function Display(){
+		$.ajax({
+			url:"https://jsonbox.io/box_aa8ae10bb8e0244a913e",
+			method:"GET"
+		}).done(function(data){
+			for(var i=0; i<data.length; i++){
+			    	str = '<div class="card">' +'<br />'+
+						'User Id is = ' + data[i]._id + '<br />' +
+						'FirstName = ' + data[i].firstName + '<br />' +
+						'LastName  = ' + data[i].lastName + '<br />' +
+            'Gender  = ' + data[i].gender + '<br />' +
+            'PhoneNumber = ' + data[i].phoneNumber + '<br />' +
+            'CreatedOn = ' + data[i]._createdOn + '<br />'
+            +'<br />'
+						'</div>';
+			$(".display-data").append(str);
+    }
+		})
+	}
+
+</script>
+
+</html>
