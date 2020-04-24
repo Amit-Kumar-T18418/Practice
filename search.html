@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.card {
+  padding: 0px;
+  text-align: center;
+  border: 30px solid #dddddd;
+  float:left;
+}
+input[type=text] {
+  width: 300px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 1px;
+  font-size: 30px;
+  background-color: #dddddd;
+  background-position: 10px 10px;
+  padding: 12px 40px 12px 40px;
+  transition: width 0.3s ease-in-out;
+  margin-top: -15px;
+  text-align: center;
+  height: 50px;
+}
+input[type=text]:focus {
+  width: 100%;
+}
+p {
+   margin-top: 5px;
+   text-align: center;
+  color: red;
+  font: 25px Arial;
+}
+.control {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+  <p>Search form:</p>
+  <div class="control">
+   <input type="text"  placeholder="Search..." name="search" id="search">
+   </div>
+<div class="display-data">
+</div>
+
+<div class="bs-example">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            </div>
+            <ul class="list-group" id="result">
+            </ul>
+            <br>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+    Display();
+  });
+	function Display(){
+		$.ajax({
+			url:"https://jsonbox.io/box_aa8ae10bb8e0244a913e",
+			method:"GET"
+		}).done(function(data){
+			for(var i=0; i<data.length; i++){
+			    	str = '<div class="card">' +'<br />'+
+						'User Id is = ' + data[i]._id + '<br />' +
+						'FirstName = ' + data[i].firstName + '<br />' +
+						'LastName  = ' + data[i].lastName + '<br />' +
+            'Gender  = ' + data[i].gender + '<br />' +
+            'PhoneNumber = ' + data[i].phoneNumber + '<br />' +
+            'CreatedOn = ' + data[i]._createdOn + '<br />'
+            +'<br />'
+						'</div>';
+			$(".display-data").append(str);
+    }
+		})
+	}
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#search').keyup(function(event) {
+            $('#result').html('');
+            var searchField = $('#search').val();
+            var expression = new RegExp(searchField, "i");
+            $.ajax({
+			     url:"https://jsonbox.io/box_aa8ae10bb8e0244a913e",
+			     method:"GET"
+		       }).done(function(data) {
+              $(".display-data").html("");
+                $.each(data, function(key, value) {
+                if (value.firstName.search(expression) != -1)
+                    {
+              str = '<div class="card">' +'<br />'+
+						'User Id is = ' + value._id + '<br />' +
+						'FirstName = ' + value.firstName + '<br />' +
+						'LastName  = ' + value.lastName + '<br />' +
+            'Gender  = ' + value.gender + '<br />' +
+            'PhoneNumber = ' + value.phoneNumber + '<br />' +
+            'CreatedOn = ' + value._createdOn + '<br />'
+            +'<br />'
+						'</div>';
+			$(".display-data").append(str);
+            }
+            });
+        });
+    });
+    });
+    </script>
+</html>
