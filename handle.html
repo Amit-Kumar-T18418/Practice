@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<style>
+h1 {
+    margin: 0 0 -1px 0;
+    padding: 15px;
+    font-size: 24px;
+    background-color: #999;
+    color: #fff;
+}
+body{
+  padding: 30px;
+  text-align: center;
+  border: 30px solid #dddddd;
+  float:left;
+}
+</style>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<h1>Implenetation Of The HandleBar<h1>
+<body>
+  <div id="content"></div>
+  <script id="handlebars-demo" type="text/x-handlebars-template">
+  {{#each names}}
+	User Id : {{_id}}<br>
+  FirstName: {{firstName}}<br>
+  LastName : {{lastName}}<br>
+  Gender: {{gender}}<br>
+  PhoneNumber : {{phoneNumber}}<br>
+  Created on: {{_createdOn}}<br>
+  <br>
+{{/each}}
+</script>
+
+</body>
+
+</html>
+
+<script>
+$(document).ready(function(){
+  var template = $('#handlebars-demo').html();
+
+var context = {
+  "names" : [
+    {"_id":"5ea05a6df9ed1e0017c55248","firstName":"Perry","lastName":"Horton","gender":"Male","phoneNumber":"(755) 639-1599","_createdOn":"2020-04-22T14:53:33.617Z"},{"_id":"5ea05a6df9ed1e0017c55246","firstName":"Timothy","lastName":"Reynolds","gender":"Male","phoneNumber":"(750) 654-0600","_createdOn":"2020-04-22T14:53:33.616Z"},{"_id":"5ea05a6df9ed1e0017c55247","firstName":"Adriana","lastName":"Reynolds","gender":"Female","phoneNumber":"(649) 717-4684","_createdOn":"2020-04-22T14:53:33.616Z"},{"_id":"5ea05a6df9ed1e0017c55244","firstName":"Alexandra","lastName":"Wolfe","gender":"Female","phoneNumber":"(803) 588-5645","_createdOn":"2020-04-22T14:53:33.615Z"},{"_id":"5ea05a6df9ed1e0017c55245","firstName":"Khalil","lastName":"Cooper","gender":"Male","phoneNumber":"(739) 446-2464","_createdOn":"2020-04-22T14:53:33.615Z"},{"_id":"5ea05a18f9ed1e0017c55243","firstName":"Mckenzie","lastName":"Goodman","gender":"Female","phoneNumber":"(475) 832-6340","_createdOn":"2020-04-22T14:52:08.602Z"},{"_id":"5ea05a18f9ed1e0017c55241","firstName":"Billy","lastName":"Day","gender":"Male","phoneNumber":"(960) 887-6077","_createdOn":"2020-04-22T14:52:08.601Z"},{"_id":"5ea05a18f9ed1e0017c55242","firstName":"Brandi","lastName":"Kim","gender":"Female","phoneNumber":"(987) 744-0078","_createdOn":"2020-04-22T14:52:08.601Z"},{"_id":"5ea05a18f9ed1e0017c55240","firstName":"Shania","lastName":"Williamson","gender":"Female","phoneNumber":"(932) 680-1049","_createdOn":"2020-04-22T14:52:08.600Z"},{"_id":"5ea05a18f9ed1e0017c5523f","firstName":"Alexandra","lastName":"Thompson","gender":"Female","phoneNumber":"(481) 559-3886","_createdOn":"2020-04-22T14:52:08.599Z"},{"_id":"5e9efc4d12e3df00171c3534","firstName":"Raven","lastName":"Peters","gender":"Female","phoneNumber":"(731) 726-4307","_createdOn":"2020-04-21T13:59:41.992Z"},{"_id":"5e9efc4d12e3df00171c3533","firstName":"Breana","lastName":"Potter","gender":"Female","phoneNumber":"(909) 224-1142","_createdOn":"2020-04-21T13:59:41.992Z"},{"_id":"5e9efc4d12e3df00171c3535","firstName":"Dominick","lastName":"Phillips","gender":"Male","phoneNumber":"(416) 553-0999","_createdOn":"2020-04-21T13:59:41.992Z"},{"_id":"5e9efc4d12e3df00171c3531","firstName":"Kristen","lastName":"Cortez","gender":"Female","phoneNumber":"(547) 274-2559","_createdOn":"2020-04-21T13:59:41.991Z"},{"_id":"5e9efc4d12e3df00171c3532","firstName":"Julianne","lastName":"Vazquez","gender":"Female","phoneNumber":"(344) 855-9300","_createdOn":"2020-04-21T13:59:41.991Z"},{"_id":"5e9efc2e12e3df00171c352f","firstName":"Oliver","lastName":"Hayes","gender":"Male","phoneNumber":"(370) 784-6314","_createdOn":"2020-04-21T13:59:10.033Z"},{"_id":"5e9efc2e12e3df00171c352e","firstName":"Calvin","lastName":"Daniel","gender":"Male","phoneNumber":"(736) 503-3419","_createdOn":"2020-04-21T13:59:10.033Z"},{"_id":"5e9efc2e12e3df00171c352d","firstName":"Paola","lastName":"Gregory","gender":"Female","phoneNumber":"(388) 484-0305","_createdOn":"2020-04-21T13:59:10.032Z"},{"_id":"5e9efc2e12e3df00171c352c","firstName":"Alyson","lastName":"Vargas","gender":"Female","phoneNumber":"(417) 959-7821","_createdOn":"2020-04-21T13:59:10.031Z"},{"_id":"5e9efc1c12e3df00171c352b","firstName":"Carlos","lastName":"Park","gender":"Male","phoneNumber":"(880) 626-1083","_createdOn":"2020-04-21T13:58:52.826Z"}
+  ]
+}
+var templateScript = Handlebars.compile(template);
+
+var html = templateScript(context);
+
+$(document.body).append(html);
+});
+
+</script>
+
+</body>
+</html>
