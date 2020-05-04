@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<style>
+  body{
+    padding: 30px;
+    text-align: center;
+    border: 50px solid #f0772b;
+    float:left;
+    margin-left: 450px;
+    width: 600px;
+  }
+</style>
+<head>
+  <h1>Dispaling the User Details Using Handlebars</h1>
+</head>
+    <body>
+        <div id="my">
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script id="course-template" type="text/x-handlebars-template">
+    {{#each this}}
+  <ul style="list-style-type:none;">
+	<li>User_id: {{_id}}</li>
+  <li>FirstName: {{firstName}}</li>
+  <li>LastName: {{lastName}}</li>
+  <li>Gender:  {{gender}}</li>
+  <li>phoneNumber: {{phoneNumber}}</li>
+  <li>_CreatedOn:  {{_createdOn}}</li>
+  </ul>
+  <br>
+{{/each}}
+</script>
+  <script>
+    var User ={
+            handlerData:function(json){
+              var ht = $("#course-template")[0].innerHTML;
+              var templateThe = Handlebars.compile(ht);
+              var objVar = templateThe(json);
+              $("#my").append(objVar);
+            },
+            userdetails : function(){
+                $.ajax({
+                    url:"https://jsonbox.io/box_aa8ae10bb8e0244a913e",
+                    method:'get',
+                    success:this.handlerData
+                })
+            }
+    };
+
+    $(document).ready(function(){
+        User.userdetails();
+    });
+
+    </script>
+    </body>
+</html>
