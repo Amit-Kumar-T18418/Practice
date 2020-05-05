@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <h1>Details Of the User</h1>
+  <style>
+.pd {
+  padding: 0px;
+  text-align: center;
+  border: 30px solid #dddddd;
+  float:left;
+}
+input[type=text] {
+  width: 300px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 1px;
+  font-size: 30px;
+  background-color: #dddddd;
+  background-position: 10px 10px;
+  padding: 12px 40px 12px 40px;
+  transition: width 0.3s ease-in-out;
+  margin-top: -15px;
+  text-align: center;
+  height: 50px;
+}
+p {
+   margin-top: -70px;
+   text-align: center;
+  color: red;
+  font: 25px Arial;
+}
+.control {
+  text-align: center;
+}
+</style>
+</head>
+    <body>
+
+    <p>Search form:</p>
+  <div class="control">
+   <input type="text" placeholder="user..." name="Searching" id="search">
+   </div>
+
+<div class="display-data">
+</div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script id="course-template" type="text/x-handlebars-template">
+    {{#each this}}
+	User_id:{{_id}}<br>
+  FirstName:{{firstName}}<br>
+  LastName :{{lastName}}<br>
+  Gender   :{{gender}}<br>
+  PhoneNumber : {{phoneNumber}}<br>
+  Created_On :{{_createdOn}}<br>
+  <br>
+{{/each}}
+</script>
+
+  <script>
+    var usermethod ={
+            handlerData:function(json){
+              var ht = $("#course-template")[0].innerHTML;
+              var templateThe = Handlebars.compile(ht);
+              var objVar = templateThe(json);
+              $(".display-data").append(objVar);
+            },
+            userdata : function(){
+                $.ajax({
+                    url:"https://jsonbox.io/box_aa8ae10bb8e0244a913e",
+                    method:'get',
+                    success:this.handlerData
+                })
+            }
+    };
+
+    $(document).ready(function(){
+        usermethod.userdata();
+    });
+
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#search').keyup(function(event) {
+            $('#result').html('');
+            var searchField = $('#search').val();
+            var expression = new RegExp(searchField, "i");
+            $.ajax({
+			     url:"https://jsonbox.io/box_aa8ae10bb8e0244a913e",
+			     method:"GET"
+		       }).done(function(data) {
+              $(".display-data").html("");
+                $.each(data, function(key, value) {
+                if (value.firstName.search(expression) != -1)
+                    {
+              str = '<div class="pd">' +'<br />'+
+						'User Id is = ' + value._id + '<br />' +
+						'FirstName = ' + value.firstName + '<br />' +
+						'LastName  = ' + value.lastName + '<br />' +
+            'Gender  = ' + value.gender + '<br />' +
+            'PhoneNumber = ' + value.phoneNumber + '<br />' +
+            'CreatedOn = ' + value._createdOn + '<br />'
+            +'<br />'
+						'</div>';
+			$(".display-data").append(str);
+            }
+            });
+        });
+    });
+    });
+    </script>
+    </body>
+</html>
